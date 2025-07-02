@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useRef, useEffect, useState, useCallback, useMemo } from "react"
+import { useRef, useEffect, useState, useCallback } from "react"
 
 const CanvasPainter = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -17,17 +17,14 @@ const CanvasPainter = () => {
   const [pendingDraw, setPendingDraw] = useState<{ x: number; y: number } | null>(null)
 
   const brushSize = 250
-  const colors = useMemo(() => ["#c3c4eb", "#eedff8", "#f2eeff", "#f8f4ff", "#FFF2E0"], [])
+  const colors = ["#c3c4eb", "#eedff8", "#f2eeff", "#f8f4ff", "#FFF2E0"]
   const TARGET_FPS = 60
-  const FRAME_DURATION = useMemo(() => 1000 / TARGET_FPS, [TARGET_FPS])
+  const FRAME_DURATION = 1000 / TARGET_FPS
 
-  const throttle = useCallback(<T extends unknown[]>(
-    func: (...args: T) => void, 
-    delay: number
-  ) => {
+  const throttle = useCallback((func: Function, delay: number) => {
     let timeoutId: NodeJS.Timeout
     let lastExecTime = 0
-    return (...args: T) => {
+    return (...args: any[]) => {
       const currentTime = Date.now()
       if (currentTime - lastExecTime > delay) {
         func(...args)
@@ -73,7 +70,7 @@ const CanvasPainter = () => {
       if (canvas.width > 0 && canvas.height > 0 && ctxRef.current) {
         try {
           imageData = ctxRef.current.getImageData(0, 0, canvas.width, canvas.height)
-        } catch {
+        } catch (e) {
           imageData = null
         }
       }
@@ -136,7 +133,7 @@ const CanvasPainter = () => {
       setLastPosition({ x, y })
       setPendingDraw(null)
     },
-    [painting, lastPosition, drawSmoothStroke, FRAME_DURATION],
+    [painting, lastPosition, drawSmoothStroke],
   )
 
   useEffect(() => {
@@ -156,8 +153,8 @@ const CanvasPainter = () => {
     }
   }, [pendingDraw, painting, paint])
 
-  const throttledMouseMove = useMemo(
-    () => throttle((e: React.MouseEvent<HTMLCanvasElement, MouseEvent>) => {
+  const throttledMouseMove = useCallback(
+    throttle((e: React.MouseEvent<HTMLCanvasElement, MouseEvent>) => {
       if (!rectRef.current) return
       const x = e.clientX - rectRef.current.left
       const y = e.clientY - rectRef.current.top
@@ -175,6 +172,20 @@ const CanvasPainter = () => {
     return {
       x: e.clientX - rectRef.current.left,
       y: e.clientY - rectRef.current.top,
+    }
+  }, [])
+
+  // Touch event position helper
+  const getTouchPosition = useCallback((e: React.TouchEvent<HTMLCanvasElement>) => {
+    if (!rectRef.current) {
+      rectRef.current = canvasRef.current?.getBoundingClientRect() || null
+    }
+    if (!rectRef.current) return { x: 0, y: 0 }
+
+    const touch = e.touches[0] || e.changedTouches[0]
+    return {
+      x: touch.clientX - rectRef.current.left,
+      y: touch.clientY - rectRef.current.top,
     }
   }, [])
 
@@ -215,8 +226,44 @@ const CanvasPainter = () => {
     }
   }, [])
 
-  const throttledResize = useMemo(
-    () => throttle(() => {
+  // Touch event handlers
+  const handleTouchStart = useCallback(
+    (e: React.TouchEvent<HTMLCanvasElement>) => {
+      e.preventDefault()
+      setPainting(true)
+      setMouseoverCount((prev) => prev + 1)
+
+      if ((mouseoverCount + 1) % 5 === 0) {
+        setBrushColor(colors[Math.floor(Math.random() * colors.length)])
+      }
+
+      const { x, y } = getTouchPosition(e)
+      setLastPosition({ x, y })
+
+      if (ctxRef.current) {
+        drawCircle(ctxRef.current, x, y)
+      }
+    },
+    [mouseoverCount, colors, getTouchPosition, drawCircle],
+  )
+
+  const throttledTouchMove = useCallback(
+    throttle((e: React.TouchEvent<HTMLCanvasElement>) => {
+      e.preventDefault()
+      if (!rectRef.current) return
+      const { x, y } = getTouchPosition(e)
+      paint(x, y)
+    }, 16),
+    [paint, throttle, getTouchPosition],
+  )
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent<HTMLCanvasElement>) => {
+    e.preventDefault()
+    stopPainting()
+  }, [stopPainting])
+
+  const throttledResize = useCallback(
+    throttle(() => {
       resizeCanvas()
     }, 100),
     [resizeCanvas, throttle],
@@ -259,6 +306,10 @@ const CanvasPainter = () => {
       onMouseMove={throttledMouseMove}
       onMouseLeave={stopPainting}
       onMouseEnter={handleMouseEnter}
+      onTouchStart={handleTouchStart}
+      onTouchMove={throttledTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchEnd}
       style={{
         touchAction: "none",
         willChange: "transform",
