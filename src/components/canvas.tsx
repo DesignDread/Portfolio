@@ -21,10 +21,10 @@ const CanvasPainter = () => {
   const TARGET_FPS = 60
   const FRAME_DURATION = 1000 / TARGET_FPS
 
-  const throttle = useCallback((func: Function, delay: number) => {
+  const throttle = useCallback(<T extends unknown[]>(func: (...args: T) => void, delay: number) => {
     let timeoutId: NodeJS.Timeout
     let lastExecTime = 0
-    return (...args: any[]) => {
+    return (...args: T) => {
       const currentTime = Date.now()
       if (currentTime - lastExecTime > delay) {
         func(...args)
@@ -70,7 +70,7 @@ const CanvasPainter = () => {
       if (canvas.width > 0 && canvas.height > 0 && ctxRef.current) {
         try {
           imageData = ctxRef.current.getImageData(0, 0, canvas.width, canvas.height)
-        } catch (e) {
+        } catch {
           imageData = null
         }
       }
