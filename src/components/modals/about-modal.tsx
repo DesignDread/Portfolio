@@ -6,7 +6,8 @@ import { useDispatch } from "react-redux"
 import { closeModal } from "../../store/menuSlice"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMapMarkerAlt, faEnvelope, faCircleArrowRight } from "@fortawesome/free-solid-svg-icons"
-import { faGithub, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
+import { faFileAlt } from "@fortawesome/free-solid-svg-icons"
+import { faGithub, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons"
 import Picture from "../../../public/Anubhav.jpg"
 import Image from "next/image"
 import { useState, useEffect } from "react"
@@ -31,8 +32,8 @@ export default function AboutModal() {
   }, [])
 
   const handleClose = () => {
+
     setIsExiting(true)
-    
     // Wait for exit animation to complete before closing
     setTimeout(() => {
       dispatch(closeModal())
@@ -52,7 +53,7 @@ export default function AboutModal() {
   return (
     // Fixed positioned backdrop overlay
     <div 
-      className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-start overflow-y-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10" 
+      className="fixed inset-0 z-50 bg-black  bg-opacity-50 flex justify-center items-start overflow-y-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10" 
       onClick={handleBackdropClick}
     >
       <div
@@ -65,7 +66,7 @@ export default function AboutModal() {
         }`}
         onClick={(e) => e.stopPropagation()} // Prevent backdrop click when clicking modal content
       >
-        <div className="flex flex-col rounded-3xl max-w-full w-full max-h-[90vh] overflow-hidden">
+        <div className="flex flex-col rounded-3xl max-w-full w-full max-h-[90vh] overflow-hidden overflow-y-auto">
           <div className="flex bg-[#f2eeff] items-center justify-between px-4 sm:px-8 lg:px-12 flex-shrink-0">
             <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl h-20 sm:h-24 lg:h-32 flex justify-center items-center">
               About
@@ -79,7 +80,7 @@ export default function AboutModal() {
           </div>
           
           {/* Scrollable content area */}
-          <div className="flex flex-col lg:flex-row p-4 sm:p-6 lg:p-8 gap-8 lg:gap-16 xl:gap-32 max-w-7xl m-auto overflow-y-auto">
+          <div className="flex flex-col lg:flex-row p-4 sm:p-6 lg:p-8 gap-8 lg:gap-16 xl:gap-32 max-w-7xl m-auto ">
             {/* Profile Section */}
             <div className="flex flex-col items-center lg:items-center lg:basis-1/3 order-1 lg:order-1">
               <div className="text-center lg:text-left">
@@ -99,18 +100,18 @@ export default function AboutModal() {
                   Punjab, India
                 </div>
                 <div className="flex gap-4 justify-center lg:justify-start mt-4">
-                  <a href="https://twitter.com/your-username" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faTwitter} size="1x" className="hover:text-blue-500 transition-colors" />
+                  <a href="https://x.com/Anubhavvv__" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faXTwitter} size="1x" className="hover:text-blue-500 transition-colors" />
                   </a>
-                  <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/DesignDread" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faGithub} size="1x" className="hover:text-gray-800 transition-colors" />
                   </a>
-                  <a href="https://www.linkedin.com/in/your-username" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.linkedin.com/in/anubhav-garg-086b89292/" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faLinkedin} size="1x" className="hover:text-blue-600 transition-colors" />
                   </a>
-                  <a href="mailto:anubhav8392@gmail.com">
-                    <FontAwesomeIcon icon={faEnvelope} size="1x" className="hover:text-blue-500 transition-colors" />
-                  </a>
+                  <a onClick={() => window.open("/Anubhav_Resume.pdf", "_blank")}>
+                          <FontAwesomeIcon icon={faFileAlt} className="" size="1x" />
+                        </a>
                 </div>
               </div>
             </div>
@@ -119,11 +120,9 @@ export default function AboutModal() {
             <div className="flex flex-col lg:basis-2/3 order-2 lg:order-2">
               <div className="flex flex-col gap-4 sm:gap-6">
                 <div className="p-3">
-                  <h3 className="font-bold text-lg sm:text-xl mb-2">Full Stack Developer</h3>
+                  {/* <h3 className="font-bold text-lg sm:text-xl mb-2">Full Stack Developer</h3> */}
                   <p className="text-sm sm:text-base">
-                    Driven full-stack developer specializing in front-end development and design, with a passion for
-                    creating responsive, user-centric interfaces. Skilled in transforming design concepts into seamless,
-                    functional web applications that provide intuitive and engaging user experiences.
+                    I’m a passionate full-stack developer who blends code with creativity. I specialize in building modern, responsive web applications with a strong focus on design and visual storytelling. From crafting seamless user experiences to designing eye-catching interfaces, I ensure every detail aligns with purpose. With expertise across both frontend and backend, I turn ideas into intuitive, functional, and visually engaging digital products. Whether it's designing graphics or writing scalable code, I strive to build solutions that not only work great but look great too.
                   </p>
                 </div>
 
@@ -165,8 +164,8 @@ export default function AboutModal() {
                       <h4 className="font-bold text-sm">Full Stack Development Intern - TBB media</h4>
                       <p className="text-sm text-gray-500">SEP 2023 - Present</p>
                       <p className="text-sm">
-                        Worked on multiple full stack projects with different teams. Meeting with client asking their
-                        review for fulfilling their needs.
+                        Worked on 7+ full stack projects with different teams. Desigened and developed responsive web
+                        applications using ReactJS, NextJS. Collaborated with cross-functional teams to deliver high-quality software solutions.
                       </p>
                     </li>
                     <li>

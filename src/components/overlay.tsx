@@ -26,14 +26,14 @@ function Overlay() {
       <div
         className={`fixed z-10 bg-[#000000CC] rounded-full transition-all duration-1000 ease-in-out ${
           isOpen
-            ? "w-[300vmax] h-[300vmax] top-[10%] right-[55%] translate-x-1/2 -translate-y-1/2"
-            : "w-0 h-0 top-[10%] right-[7%] translate-x-1/2 -translate-y-1/2"
+            ? "w-[300vmax] h-[300vmax] top-0 md:top-[2%] lg:top-[7%] right-[25%] translate-x-1/2 -translate-y-1/2"
+            : "w-0 h-0 top-5 md:top-[2%] lg:top-[2%] xl:top-[7%] right-[7%] translate-x-1/2 -translate-y-1/2"
         }`}
       ></div>
 
       {/* Menu Items */}
       {isOpen && !activeModal && (
-        <ul className="fixed inset-0 z-20 text-[#b0b0b1] font-bold flex flex-col justify-center items-center transition-all duration-1000 ease-in-out opacity-100 pointer-events-auto scale-100 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+        <ul className="fixed inset-0 z-20 text-[#b0b0b1] font-bold flex flex-col justify-center items-center transition-all duration-1000 ease-in-out opacity-100 pointer-events-auto scale-100 text-3xl sm:text-4xl md:text-5xl ">
           <li
             className="p-3 sm:p-4 md:p-5 hover:text-white cursor-pointer transition-colors duration-300 animate-in slide-in-from-top-4"
             onClick={() => handleMenuClick("about")}
@@ -65,8 +65,8 @@ function Overlay() {
             className="p-3 sm:p-4 md:p-5 hover:text-white cursor-pointer transition-colors duration-300 animate-in slide-in-from-top-4"
             style={{ animationDelay: "400ms" }}
           >
-           <Link href="https://dev.to/anubhavvv___" />
-             Blog
+           <Link href="https://dev.to/anubhavvv___" >Blog</Link>
+             
           </li>
         </ul>
       )}

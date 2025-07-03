@@ -60,6 +60,27 @@ const CanvasPainter = () => {
     }
   }, [brushColor, brushSize])
 
+
+  
+// Remove reliance on window.resized (not standard). Instead, handle resize in useEffect or via resizeCanvas.
+// If you want to clear and fill the canvas background after a resize, call this after resizing:
+
+const fillCanvasBackground = useCallback(() => {
+  const canvas = canvasRef.current
+  if (canvas && ctxRef.current) {
+    ctxRef.current.fillStyle = "#f8f4ff"
+    ctxRef.current.fillRect(0, 0, canvas.width, canvas.height)
+  }
+}, [])
+
+if (
+  window.innerWidth !== (canvasRef.current?.width || 0) ||
+  window.innerHeight !== (canvasRef.current?.height || 0)
+) {
+  fillCanvasBackground();
+}
+
+
   const resizeCanvas = useCallback(() => {
     const canvas = canvasRef.current
     if (canvas) {
@@ -225,7 +246,7 @@ const CanvasPainter = () => {
       animationRef.current = null
     }
   }, [])
-
+  
   // Touch event handlers
   const handleTouchStart = useCallback(
     (e: React.TouchEvent<HTMLCanvasElement>) => {

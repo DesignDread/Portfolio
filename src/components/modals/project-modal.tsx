@@ -85,8 +85,8 @@ export default function ProjectsModal() {
       description:
         "Official website for IEEE CIET chapter, showcasing events, achievements, and community initiatives. Built with modern web technologies to provide an engaging user experience.",
       tech: ["Next.js", "Canva", "MERN"],
-      github: "https://ieee.chitkara.edu.in/",
-      live: "",
+      github: "",
+      live: "https://ieee.chitkara.edu.in/",
       image: "https://res.cloudinary.com/djy3ewpb8/image/upload/v1735638125/owqol6jkkwjp0efasrrs.png",
     },
   ]
@@ -100,14 +100,15 @@ export default function ProjectsModal() {
       <div
         className={`relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full transition-all duration-500 ease-in-out transform ${
           isVisible && !isExiting
-            ? "translate-y-0 opacity-100 scale-100"
+            ? "translate-y-0 opacity-100 scale-100 " 
+
             : isExiting
-              ? "translate-y-full opacity-0 scale-95"
+              ? "translate-y-full bg-black opacity-0 scale-95"
               : "-translate-y-full opacity-0 scale-95"
         }`}
         onClick={(e) => e.stopPropagation()} // Prevent backdrop click when clicking modal content
       >
-        <div className="flex flex-col max-h-[90vh] overflow-hidden rounded-2xl">
+        <div className="flex flex-col max-h-[90vh] overflow-hidden rounded-2xl overflow-y-auto">
           {/* Header */}
           <div className="flex bg-[#f2eeff] items-center justify-between px-4 sm:px-8 lg:px-12 flex-shrink-0">
             <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl h-20 sm:h-24 lg:h-32 flex justify-center items-center">
@@ -122,7 +123,7 @@ export default function ProjectsModal() {
           </div>
 
           {/* Scrollable content area */}
-          <div className="p-8 pt-16 overflow-y-auto">
+          <div className="p-8 pt-16">
             {/* Personal Projects Section */}
             <div className="mb-16">
               <h2 className="text-2xl font-medium text-gray-600 mb-4">Personal Projects</h2>
