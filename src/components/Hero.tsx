@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Bitmoji from "../../public/bitmoji.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin, faXTwitter } from '@fortawesome/free-brands-svg-icons';
