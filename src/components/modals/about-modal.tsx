@@ -106,7 +106,7 @@ export default function AboutModal() {
               <div className="flex flex-col gap-4 sm:gap-6">
                 <div className="p-3">
                   <p className="text-sm sm:text-base">
-                    I’m a passionate full-stack developer who blends code with creativity. I specialize in building modern, responsive web applications with a strong focus on design and visual storytelling. From crafting seamless user experiences to designing eye-catching interfaces, I ensure every detail aligns with purpose. With expertise across both frontend and backend, I turn ideas into intuitive, functional, and visually engaging digital products. Whether it's designing graphics or writing scalable code, I strive to build solutions that not only work great but look great too.
+                    I&apos;m a passionate full-stack developer who blends code with creativity. I specialize in building modern, responsive web applications with a strong focus on design and visual storytelling. From crafting seamless user experiences to designing eye-catching interfaces, I ensure every detail aligns with purpose. With expertise across both frontend and backend, I turn ideas into intuitive, functional, and visually engaging digital products. Whether it&apos;s designing graphics or writing scalable code, I strive to build solutions that not only work great but look great too.
                   </p>
                 </div>
 
@@ -173,7 +173,7 @@ export default function AboutModal() {
                   <h1 className="font-bold text-xl sm:text-2xl mb-2">Achievements</h1>
                   <ul className="list-disc text-sm space-y-1 ml-4">
                     <li>HackIndia Hackathon finalist with over 270+ teams</li>
-                    <li>{"Name in Dean&apos;s list for 'Mentor&apos;s Mind', 'Star Programmer'"}</li>
+                    <li>Name in Dean&apos;s list for &apos;Mentor&apos;s Mind&apos;, &apos;Star Programmer&apos;</li>
                     <li>Runner-Up and Black knight Award at web development Code Relay by CN-CUIET</li>
                     <li>Second Runner-Up at Codiy The Unfind by CN-CUIET</li>
                   </ul>
