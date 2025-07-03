@@ -11,7 +11,9 @@ function Hero() {
       <div className="relative   pointer-events-none">
         <div className="relative  w-52 h-52 lg:w-48 lg:h-48 xl:w-56 xl:h-56 2xl:w-72 2xl:h-72 overflow-hidden ">
           <Image
-            src={Bitmoji}
+            src="https://res.cloudinary.com/dtlsr62hh/image/upload/v1751542003/bitmoji_jeggux.png"
+            width={300}
+            height={300}
             alt="Avatar"
             className="object-cover w-full h-full"
           />
