@@ -60,30 +60,29 @@ const CanvasPainter = () => {
     }
   }, [brushColor, brushSize])
 
+  const fillCanvasBackground = useCallback(() => {
+    const canvas = canvasRef.current
+    if (canvas && ctxRef.current) {
+      ctxRef.current.fillStyle = "#f8f4ff"
+      ctxRef.current.fillRect(0, 0, canvas.width, canvas.height)
+    }
+  }, [])
 
-  
-// Remove reliance on window.resized (not standard). Instead, handle resize in useEffect or via resizeCanvas.
-// If you want to clear and fill the canvas background after a resize, call this after resizing:
-
-const fillCanvasBackground = useCallback(() => {
-  const canvas = canvasRef.current
-  if (canvas && ctxRef.current) {
-    ctxRef.current.fillStyle = "#f8f4ff"
-    ctxRef.current.fillRect(0, 0, canvas.width, canvas.height)
-  }
-}, [])
-
-if (
-  window.innerWidth !== (canvasRef.current?.width || 0) ||
-  window.innerHeight !== (canvasRef.current?.height || 0)
-) {
-  fillCanvasBackground();
-}
-
+  // Move the window size check inside useEffect
+  useEffect(() => {
+    if (typeof window !== 'undefined' && canvasRef.current) {
+      if (
+        window.innerWidth !== (canvasRef.current?.width || 0) ||
+        window.innerHeight !== (canvasRef.current?.height || 0)
+      ) {
+        fillCanvasBackground();
+      }
+    }
+  }, [fillCanvasBackground])
 
   const resizeCanvas = useCallback(() => {
     const canvas = canvasRef.current
-    if (canvas) {
+    if (canvas && typeof window !== 'undefined') {
       const width = window.innerWidth
       const height = window.innerHeight
       let imageData = null
@@ -292,10 +291,14 @@ if (
 
   useEffect(() => {
     resizeCanvas()
-    window.addEventListener("resize", throttledResize)
+    if (typeof window !== 'undefined') {
+      window.addEventListener("resize", throttledResize)
+    }
 
     return () => {
-      window.removeEventListener("resize", throttledResize)
+      if (typeof window !== 'undefined') {
+        window.removeEventListener("resize", throttledResize)
+      }
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
@@ -309,12 +312,16 @@ if (
       }
     }
 
-    window.addEventListener("scroll", updateRect)
-    window.addEventListener("resize", updateRect)
+    if (typeof window !== 'undefined') {
+      window.addEventListener("scroll", updateRect)
+      window.addEventListener("resize", updateRect)
+    }
 
     return () => {
-      window.removeEventListener("scroll", updateRect)
-      window.removeEventListener("resize", updateRect)
+      if (typeof window !== 'undefined') {
+        window.removeEventListener("scroll", updateRect)
+        window.removeEventListener("resize", updateRect)
+      }
     }
   }, [])
 
