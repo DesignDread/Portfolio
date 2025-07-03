@@ -9,11 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 interface HamburgerButtonProps {
   isOpen: boolean
   hasActiveModal: boolean
-  isActive?: boolean
+  
   onClick: () => void
 }
 
-const HamburgerButton: React.FC<HamburgerButtonProps> = ({ isOpen, hasActiveModal, isActive, onClick }) => (
+const HamburgerButton: React.FC<HamburgerButtonProps> = ({ isOpen, hasActiveModal,  onClick }) => (
   <>
     {/* Logo container with lower z-index */}
     <div className="fixed top-0 left-0 z-20 pointer-events-none h-16 sm:h-20 md:h-24 lg:h-28 px-2 sm:px-4 md:px-6 flex items-center">

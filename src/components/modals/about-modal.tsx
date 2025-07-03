@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useDispatch } from "react-redux"
 import { closeModal } from "../../store/menuSlice"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -18,42 +17,31 @@ export default function AboutModal() {
   const [isExiting, setIsExiting] = useState(false)
 
   useEffect(() => {
-    // Trigger entrance animation
     const timer = setTimeout(() => setIsVisible(true), 50)
-    
-    // Prevent body scroll when modal is open
     document.body.style.overflow = 'hidden'
-    
     return () => {
       clearTimeout(timer)
-      // Restore body scroll when component unmounts
       document.body.style.overflow = 'unset'
     }
   }, [])
 
   const handleClose = () => {
-
     setIsExiting(true)
-    // Wait for exit animation to complete before closing
     setTimeout(() => {
       dispatch(closeModal())
-      // Restore body scroll
       document.body.style.overflow = 'unset'
     }, 300)
   }
 
-  // Add this new function for backdrop clicks
   const handleBackdropClick = (e: React.MouseEvent) => {
-    // Only close if clicking the backdrop, not the modal content
     if (e.target === e.currentTarget) {
       handleClose()
     }
   }
 
   return (
-    // Fixed positioned backdrop overlay
     <div 
-      className="fixed inset-0 z-50 bg-black  bg-opacity-50 flex justify-center items-start overflow-y-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10" 
+      className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-start overflow-y-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10" 
       onClick={handleBackdropClick}
     >
       <div
@@ -64,7 +52,7 @@ export default function AboutModal() {
               ? "translate-y-full opacity-0 scale-95"
               : "-translate-y-full opacity-0 scale-95"
         }`}
-        onClick={(e) => e.stopPropagation()} // Prevent backdrop click when clicking modal content
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-col rounded-3xl max-w-full w-full max-h-[90vh] overflow-hidden overflow-y-auto">
           <div className="flex bg-[#f2eeff] items-center justify-between px-4 sm:px-8 lg:px-12 flex-shrink-0">
@@ -79,9 +67,7 @@ export default function AboutModal() {
             />
           </div>
           
-          {/* Scrollable content area */}
-          <div className="flex flex-col lg:flex-row p-4 sm:p-6 lg:p-8 gap-8 lg:gap-16 xl:gap-32 max-w-7xl m-auto ">
-            {/* Profile Section */}
+          <div className="flex flex-col lg:flex-row p-4 sm:p-6 lg:p-8 gap-8 lg:gap-16 xl:gap-32 max-w-7xl m-auto">
             <div className="flex flex-col items-center lg:items-center lg:basis-1/3 order-1 lg:order-1">
               <div className="text-center lg:text-left">
                 <Image
@@ -110,17 +96,15 @@ export default function AboutModal() {
                     <FontAwesomeIcon icon={faLinkedin} size="1x" className="hover:text-blue-600 transition-colors" />
                   </a>
                   <a onClick={() => window.open("/Anubhav_Resume.pdf", "_blank")}>
-                          <FontAwesomeIcon icon={faFileAlt} className="" size="1x" />
-                        </a>
+                    <FontAwesomeIcon icon={faFileAlt} size="1x" />
+                  </a>
                 </div>
               </div>
             </div>
 
-            {/* Content Section */}
             <div className="flex flex-col lg:basis-2/3 order-2 lg:order-2">
               <div className="flex flex-col gap-4 sm:gap-6">
                 <div className="p-3">
-                  {/* <h3 className="font-bold text-lg sm:text-xl mb-2">Full Stack Developer</h3> */}
                   <p className="text-sm sm:text-base">
                     I’m a passionate full-stack developer who blends code with creativity. I specialize in building modern, responsive web applications with a strong focus on design and visual storytelling. From crafting seamless user experiences to designing eye-catching interfaces, I ensure every detail aligns with purpose. With expertise across both frontend and backend, I turn ideas into intuitive, functional, and visually engaging digital products. Whether it's designing graphics or writing scalable code, I strive to build solutions that not only work great but look great too.
                   </p>
@@ -129,22 +113,11 @@ export default function AboutModal() {
                 <div className="flex flex-col p-3">
                   <h1 className="font-bold text-xl sm:text-2xl mb-2">Skills</h1>
                   <ul className="space-y-1 text-sm sm:text-base">
-                    <li>
-                      <strong>Languages:</strong> C, CPP, Python, Java, Javascript, Typescript
-                    </li>
-                    <li>
-                      <strong>Frontend:</strong> ReactJs, Vuejs, ViteJs, NextJs, TailwindCSS, SCSS, Bootstrap, GSAP,
-                      Framer Motion
-                    </li>
-                    <li>
-                      <strong>Backend:</strong> NodeJs, ExpressJs
-                    </li>
-                    <li>
-                      <strong>Database:</strong> MySQL, MongoDB
-                    </li>
-                    <li>
-                      <strong>Other:</strong> Git, Github, Canva, Figma
-                    </li>
+                    <li><strong>Languages:</strong> C, CPP, Python, Java, Javascript, Typescript</li>
+                    <li><strong>Frontend:</strong> ReactJs, Vuejs, ViteJs, NextJs, TailwindCSS, SCSS, Bootstrap, GSAP, Framer Motion</li>
+                    <li><strong>Backend:</strong> NodeJs, ExpressJs</li>
+                    <li><strong>Database:</strong> MySQL, MongoDB</li>
+                    <li><strong>Other:</strong> Git, Github, Canva, Figma</li>
                   </ul>
                 </div>
 
@@ -200,7 +173,7 @@ export default function AboutModal() {
                   <h1 className="font-bold text-xl sm:text-2xl mb-2">Achievements</h1>
                   <ul className="list-disc text-sm space-y-1 ml-4">
                     <li>HackIndia Hackathon finalist with over 270+ teams</li>
-                    <li>{"Name in Dean's list for 'Mentor's Mind', 'Star Programmer'"}</li>
+                    <li>{"Name in Dean&apos;s list for 'Mentor&apos;s Mind', 'Star Programmer'"}</li>
                     <li>Runner-Up and Black knight Award at web development Code Relay by CN-CUIET</li>
                     <li>Second Runner-Up at Codiy The Unfind by CN-CUIET</li>
                   </ul>

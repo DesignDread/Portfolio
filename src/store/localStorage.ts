@@ -15,6 +15,6 @@ export const saveState = (state: any) => {
     const serializedState = JSON.stringify(state)
     localStorage.setItem('menuState', serializedState)
   } catch (err) {
-    // Ignore write errors
+    console.error("Could not save state", err)
   }
 }
