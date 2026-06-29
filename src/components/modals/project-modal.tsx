@@ -7,9 +7,12 @@ import Image from "next/image"
 import NeuralNitwits from "../../../public/NeuralNitwits.png"
 import stakeNseek from "../../../public/stakeNseek.png"
 import HackWithHer from "../../../public/HackWithHer.png"
+import Skillzy from "../../../public/Skillzy.png"
+import TaxSavy from "../../../public/TaxSavy.png"
 import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useEffect } from "react"
+import SenseiAi from "../../../public/SenseiAI.png"
 
 export default function ProjectsModal() {
   const dispatch = useDispatch()
@@ -50,6 +53,31 @@ export default function ProjectsModal() {
   }
 
   const projects = [
+    {
+      title: "Skillzy",
+      description:"Skillzy is a full-stack learning and skill development platform designed to help users discover, learn, and showcase technical skills through an interactive and modern web experience. It features secure authentication, personalized user experiences, and a scalable architecture built for real-world learning workflows.",
+      tech: ["Next.js", "Tailwind CSS", "MERN","Figma"],
+      github: "#",
+      live: "https://skillzy.vercel.app/",
+      image: Skillzy,
+    },
+    {
+       title: "TaxSavy",
+      description:"TaxSavy is a fintech platform that connects influencers, startups, and businesses with verified Chartered Accountants for tax filing, GST compliance, registrations, and financial consultation through a streamlined digital experience.",
+      tech: ["Next.js", "Tailwind CSS", "MERN","Figma"],
+      github: "#",
+      live: "https://www.mytaxsavvy.com/",
+      image: TaxSavy,
+    },
+    {
+      title: "Sensei AI",
+      description:
+        "Sensei AI is a modern, AI-powered web application built with Next.js that empowers content creators to optimize their social media strategies. It analyzes engagement data in real time—such as comparing Reels and Stories—to provide actionable insights.",
+      tech: ["Next.js", "Node", "Agentic AI", "REST API"],
+      github: "#",
+      live: "https://sensei-ai-six.vercel.app/",
+      image: SenseiAi,
+    },
     {
       title: "Neural Nitwits",
       description:

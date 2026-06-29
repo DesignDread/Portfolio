@@ -31,9 +31,9 @@ const HamburgerButton: React.FC<HamburgerButtonProps> = ({ isOpen, hasActiveModa
       {/* Resume button */}
       <button
         className="font-semibold p-2 sm:py-2 sm:px-4 flex items-center justify-center transition-all duration-300 touch-manipulation"
-        onClick={() => window.open("/Anubhav_Resume.pdf", "_blank")}
+        onClick={() => window.open("https://drive.google.com/file/d/15FHjwItP8gevjubeDBaPhfvYj62AeN6y/view?usp=sharing", "_blank")}
         type="button"
-        aria-label="Download Resume"
+        aria-label="Open Resume"
       >
         <FontAwesomeIcon icon={faFileAlt} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl" />
       </button>

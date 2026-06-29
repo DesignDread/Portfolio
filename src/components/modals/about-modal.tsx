@@ -95,7 +95,7 @@ export default function AboutModal() {
                   <a href="https://www.linkedin.com/in/anubhav-garg-086b89292/" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faLinkedin} size="1x" className="hover:text-blue-600 transition-colors" />
                   </a>
-                  <a onClick={() => window.open("/Anubhav_Resume.pdf", "_blank")}>
+                  <a onClick={() => window.open("https://drive.google.com/file/d/15FHjwItP8gevjubeDBaPhfvYj62AeN6y/view", "_blank")}>
                     <FontAwesomeIcon icon={faFileAlt} size="1x" />
                   </a>
                 </div>
@@ -117,7 +117,8 @@ export default function AboutModal() {
                     <li><strong>Frontend:</strong> ReactJs, Vuejs, ViteJs, NextJs, TailwindCSS, SCSS, Bootstrap, GSAP, Framer Motion</li>
                     <li><strong>Backend:</strong> NodeJs, ExpressJs</li>
                     <li><strong>Database:</strong> MySQL, MongoDB</li>
-                    <li><strong>Other:</strong> Git, Github, Canva, Figma</li>
+                    <li><strong>Cloud:</strong> AWS, Docker</li>
+                    <li><strong>Other:</strong> Git, GitHub, System Design , Canva, Figma, Japnese (Preparing for N5), Agentic AI.</li>
                   </ul>
                 </div>
 
