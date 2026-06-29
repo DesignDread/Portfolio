@@ -1,32 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Anubhav Garg — Portfolio
 
-## Getting Started
+Welcome to the source code of my personal portfolio website.
 
-First, run the development server:
+This portfolio is a collection of my work as a software engineer, featuring projects, technical skills, achievements, and the technologies I'm passionate about. It serves as a central place to showcase my journey in full-stack development, AI, cloud technologies, and software engineering.
+
+## 🌐 Live Website
+
+**https://anubhavgarg.me**
+
+## ✨ Features
+
+* Modern, responsive UI
+* Project showcase with live demos & GitHub links
+* Technical skills and technology stack
+* Professional experience & achievements
+* Contact section
+* Optimized for performance and SEO
+
+## 🛠️ Tech Stack
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+* Vercel
+
+## 🚀 Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/DesignDread/Portfolio.git
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+components/
+public/
+lib/
+styles/
+```
 
-## Learn More
+## 📬 Contact
 
-To learn more about Next.js, take a look at the following resources:
+Feel free to connect with me!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Portfolio: https://anubhavgarg.me
+* LinkedIn: (https://www.linkedin.com/in/anubhav-garg-086b89292/)
+* GitHub: (https://github.com/DesignDread)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-
+If you like the project, consider giving it a ⭐.
